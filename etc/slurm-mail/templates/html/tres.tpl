@@ -1,5 +1,5 @@
-<p>Trackable Resources:</p>
+<p>Los recursos trazeables utilizados por el job son los siguientes:</p>
 
-<table>
-$TRACKABLE_RESOURCES
+<table class="job-table">
+    $TRACKABLE_RESOURCES
 </table>

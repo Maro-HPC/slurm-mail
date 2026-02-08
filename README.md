@@ -350,6 +350,7 @@ Slurm-Mail uses Python's [string.Template](https://docs.python.org/3/library/str
 | ended-array_summary.tpl   | Used when all jobs in an array have finished.                     |
 | ended-hetjob.tpl          | Used for the leader job in a heterogeneous job that has ended.    |
 | ended.tpl                 | Used for jobs that have finished.                                 |
+| header.tpl                | Used to create the header of e-mails.                             |
 | invalid-dependency.tpl    | Used when a job has an invalid dependency.                        |
 | job-table.tpl             | Used to create the job info table in e-mails.                     |
 | never-ran.tpl             | Used for jobs that never ran.                                     |

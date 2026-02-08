@@ -9,20 +9,28 @@
 </style>
 </head>
 <body>
+<div class="container">
 
-<p>Dear $USER,</p>
+$HEADER
 
-<p>Your job $JOB_ID on $CLUSTER has an invalid job dependency and will not be despatched as a result. Please consider adjusting the dependencies that you have assigned to your job.</p>
+<div class="content">
 
-<p>For example, to remove all dependencies for a job you can run:</p>
+<p>Estimado(a) <strong>$USER</strong>,</p>
+
+<p>Su job nro. <strong>$JOB_ID</strong> tiene una dependencia inválida y no será despachado como resultado. Por favor, considere ajustar las dependencias que ha asignado a su job.</p>
+
+<p>Por ejemplo, para eliminar todas las dependencias de un job puede ejecutar:</p>
 
 <p><code>scontrol update job=$JOB_ID dependency=</code></p>
 
-<p>Details about the job can be found in the table below:</p>
+<p>Los detalles de su job se muestran a continuación:</p>
 
 $JOB_TABLE
 
+</div>
+
 $SIGNATURE
 
+</div>
 </body>
 </html>

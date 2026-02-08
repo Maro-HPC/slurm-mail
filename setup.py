@@ -52,6 +52,7 @@ setuptools.setup(
             'etc/slurm-mail/templates/html/ended-array.tpl',
             'etc/slurm-mail/templates/html/ended.tpl',
             'etc/slurm-mail/templates/html/ended-hetjob.tpl',
+            'etc/slurm-mail/templates/html/header.tpl',
             'etc/slurm-mail/templates/html/invalid-dependency.tpl',
             'etc/slurm-mail/templates/html/job-output.tpl',
             'etc/slurm-mail/templates/html/job-table.tpl',

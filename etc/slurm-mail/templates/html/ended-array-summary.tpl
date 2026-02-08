@@ -5,20 +5,29 @@
 </style>
 </head>
 <body>
+<div class="container">
 
-<p>Dear $USER,</p>
+$HEADER
 
-<p>All of your jobs for job array $ARRAY_JOB_ID have finished on $CLUSTER.</p>
+<div class="content">
 
-<p>Details about the last job in the array that finished are shown in the table below:</p>
+<p>Estimado(a) <strong>$USER</strong>,</p>
+
+<p>Todos los jobs en el job array <strong>$ARRAY_JOB_ID</strong> han terminado.</p>
+
+<p>Los detalles del último job en el array que terminó se muestran a continuación:</p>
 
 $JOB_TABLE
 
 $TRES_TABLE
 
-<p>Note: you have not been sent e-mail notifications for each job in the array. To receive individual job end e-mails for each job in your next array, add the "ARRAY_TASKS" option to the mail-type SBATCH parameter.</p>
+$JOB_OUTPUT
+
+<p>Observación: No se le han enviado notificaciones por correo electrónico para cada job en el array. Para recibir correos electrónicos individuales de finalización para cada job en su próximo job array, agregue la opción "ARRAY_TASKS" al parámetro <span class="file-path">#SBATCH mail-type.</span></p>
+</div>
 
 $SIGNATURE
 
+</div>
 </body>
 </html>

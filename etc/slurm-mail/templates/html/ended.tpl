@@ -1,24 +1,36 @@
 <html>
 <head>
-<style>
+  <style>
 	$CSS
-</style>
+  </style>
 </head>
+
 <body>
+	
+  <div class="container">
+	
+	$HEADER
 
-<p>Dear $USER,</p>
+	<!-- Main content -->
+    <div class="content">
 
-<p>Your job $JOB_ID has $END_TXT on $CLUSTER.</p>
+		<p>Estimado(a) <strong>$USER</strong>,</p>
 
-<p>Details about the job can be found in the table below:</p>
+		<p>Su job nro. <strong>$JOB_ID</strong> cambió de estado a:</p>
 
-$JOB_TABLE
+		<div class="card"><div class="status-hero">$END_TXT</div></div>
+		
+		<p>Los detalles de su job se muestran a continuación:</p>
 
-$TRES_TABLE
+		$JOB_TABLE
 
-$JOB_OUTPUT
+		$TRES_TABLE
+		
+		$JOB_OUTPUT
+	</div>
 
-$SIGNATURE
-
+	$SIGNATURE
+	
+  </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
-<p>The last $OUTPUT_LINES lines of <i>$OUTPUT_FILE</i> are shown below:</p>
+<p>Las últimas $OUTPUT_LINES líneas de <span class="file-path"><i>$OUTPUT_FILE</i></span> se muestran a continuación:</p>
 
 <pre>
-$JOB_OUTPUT
+    $JOB_OUTPUT
 </pre>

@@ -1,90 +1,90 @@
-<table>
+<table class="job-table">
 	<tr>
-		<td>ID:</td>
+		<th>ID:</th>
 		<td>$JOB_ID</td>
 	</tr>
 	<tr>
-		<td>Account:</td>
+		<th>Account:</th>
 		<td>$ACCOUNT</td>
 	</tr>
 	<tr>
-		<td>Name:</td>
+		<th>Nombre:</th>
 		<td>$JOB_NAME</td>
 	</tr>
 	<tr>
-		<td>Partition:</td>
+		<th>Partición:</th>
 		<td>$PARTITION</td>
 	</tr>
 	<tr>
-		<td>Nodes:</td>
+		<th>Nodos:</th>
 		<td>$NODES</td>
 	</tr>
 	<tr>
-		<td>Requested Memory:</td>
+		<th>Memoria solicitada:</th>
 		<td>$REQ_MEMORY</td>
 	</tr>
 	<tr>
-		<td>Wallclock:</td>
+		<th>Wallclock:</th>
 		<td>$WALLCLOCK</td>
 	</tr>
 	<tr>
-		<td>Std out:</td>
+		<th>Std out:</th>
 		<td>$STDOUT</td>
 	</tr>
 	<tr>
-		<td>Std err:</td>
+		<th>Std err:</th>
 		<td>$STDERR</td>
 	</tr>
 	<tr>
-		<td>Work dir:</td>
+		<th>Directorio de trabajo:</th>
 		<td>$WORKDIR</td>
 	</tr>
 	<tr class="jobEnd">
-		<td>Admin Comment:</td>
+		<th>Comentario del administrador:</th>
 		<td>$ADMIN_COMMENT</td>
 	</tr>
 	<tr>
-		<td>Comment:</td>
+		<th>Comentario:</th>
 		<td>$COMMENT</td>
 	</tr>
 	<tr>
-		<td>Start:</td>
+		<th>Inicio:</th>
 		<td>$START</td>
 	</tr>
 	<tr class="jobEnd">
-		<td>End:</td>
+		<th>Fin:</th>
 		<td>$END</td>
 	</tr>
 	<tr class="jobEnd">
-		<td>Elapsed:</td>
+		<th>Duración:</th>
 		<td>$ELAPSED</td>
 	</tr>
 	<tr class="jobEnd">
-		<td>CPU Time:</td>
+		<th>Tiempo de CPU:</th>
 		<td>$CPU_TIME</td>
 	</tr>
-	<tr class="jobEnd">
-		<td>CPU Efficiency:</td>
+	<tr	class="jobEnd">
+		<th>Eficiencia de CPU:</th>
 		<td>$CPU_EFFICIENCY</td>
 	</tr>
 	<tr class="jobEnd">
-		<td>Maximum memory usage per node:</td>
+		<th>Uso máximo de memoria por nodo:</th>
 		<td>$MAX_MEMORY</td>
 	</tr>
 	<tr class="jobEnd">
-		<td>Wallclock Accuracy:</td>
+		<th>Precisión de Wallclock:</th>
 		<td>$WALLCLOCK_ACCURACY</td>
 	</tr>
 	<tr class="jobEnd">
-		<td>Node List:</td>
+		<th>Lista de nodos:</th>
 		<td>$NODE_LIST</td>
 	</tr>
 	<tr class="jobEnd">
-		<td>Exit Code:</td>
+		<th>Exit Code:</th>
 		<td>$EXIT_CODE</td>
 	</tr>
 	<tr class="jobEnd">
-		<td>Exit state:</td>
+		<th>Exit state:</th>
 		<td>$EXIT_STATE</td>
 	</tr>
 </table>

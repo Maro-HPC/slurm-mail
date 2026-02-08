@@ -42,6 +42,13 @@ HTML and plain text templates can be found, by default, at: `/etc/slurm-mail/tem
 | $SIGNATURE | E-mail signature                                        |
 | $USER      | The user's name.                                        |
 
+## header.tpl
+| Variable   | Purpose                                                 |
+| ---------- | ------------------------------------------------------- |
+| $EMAIL_LOGO_URL   | Url for a logo to be shown on the top header.    |
+| $EMAIL_ICON_URL   | Url for a icon to be shown on top of the title   |
+
+
 ## job-output.tpl
 
 | Variable      | Purpose                                                     |

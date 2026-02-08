@@ -1,5 +1,8 @@
-<p>Regards,</p>
+<div class="signature">
+    <p>Atentamente,</p>
+    <p>$EMAIL_FROM</p>
+</div>
 
-<p>$EMAIL_FROM</p>
-
-<p><i>Note: This is an automated e-mail.</i></p>
+<div class="footer">
+    <strong>Nota:</strong> Este es un mensaje automático de Slurm.
+</div>

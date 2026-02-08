@@ -9,16 +9,25 @@
 </style>
 </head>
 <body>
+<div class="container">
 
-<p>Dear $USER,</p>
+$HEADER
 
-<p>Your job $JOB_ID in array $ARRAY_JOB_ID has started on $CLUSTER.</p>
+<!-- Main content -->
+<div class="content">
 
-<p>Details about this job can be found in the table below:</p>
+	<p>Estimado(a) <strong>$USER</strong>,</p>
 
-$JOB_TABLE
+	<p>Su job nro. <strong>$JOB_ID</strong> en el array <strong>$ARRAY_JOB_ID</strong> ha comenzado su ejecución.</p>
+	
+	<p>Los detalles de su job se muestran a continuación:</p>
+
+	$JOB_TABLE
+
+</div>
 
 $SIGNATURE
 
+</div>
 </body>
 </html>

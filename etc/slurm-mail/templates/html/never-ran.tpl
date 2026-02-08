@@ -9,16 +9,25 @@
 </style>
 </head>
 <body>
+<div class="container">
 
-<p>Dear $USER,</p>
+$HEADER
 
-<p>Your job $JOB_ID did not run on $CLUSTER.</p>
+<!-- Main content -->
+<div class="content">
 
-<p>Details about the job can be found in the table below:</p>
+	<p>Estimado(a) <strong>$USER</strong>,</p>
 
-$JOB_TABLE
+	<p>Su job nro. <strong>$JOB_ID</strong> no se ejecutó.</p>
+	
+	<p>Los detalles de su job se muestran a continuación:</p>
+
+	$JOB_TABLE
+
+</div>
 
 $SIGNATURE
 
+</div>
 </body>
 </html>

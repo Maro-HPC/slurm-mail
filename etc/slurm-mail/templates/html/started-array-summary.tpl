@@ -9,18 +9,26 @@
 </style>
 </head>
 <body>
+<div class="container">
 
-<p>Dear $USER,</p>
+$HEADER
 
-<p>Your first job in array $ARRAY_JOB_ID has started on $CLUSTER.</p>
+<!-- Main content -->
+<div class="content">
 
-<p>Details about this job can be found in the table below:</p>
+	<p>Estimado(a) <strong>$USER</strong>,</p>
 
-$JOB_TABLE
+	<p>Su primer job en el array <strong>$ARRAY_JOB_ID</strong> ha comenzado su ejecución.</p>
+	
+	<p>Los detalles de su job se muestran a continuación:</p>
 
-<p>Note: you will not receive e-mail notifications when other jobs in your job array start. To receive individual job start e-mails for each job in your next array, add the "ARRAY_TASKS" option to the mail-type SBATCH parameter.</p>
+	$JOB_TABLE
+
+	<p>Nota: no recibirá notificaciones por correo electrónico cuando otros jobs en su array de jobs comiencen. Para recibir correos electrónicos de inicio de job individuales para cada job en su próximo array, agregue la opción "ARRAY_TASKS" al parámetro <span class="file-path">#SBATCH mail-type.</span></p>
+</div>
 
 $SIGNATURE
 
+</div>
 </body>
 </html>

@@ -5,20 +5,29 @@
 </style>
 </head>
 <body>
+<div class="container">
 
-<p>Dear $USER,</p>
+$HEADER
 
-<p>The leader of your heterogeneous job $JOB_ID has $END_TXT on $CLUSTER.</p>
+<div class="content">
 
-<p>Details about the job can be found in the table below:</p>
+<p>Estimado(a) <strong>$USER</strong>,</p>
+
+<p>El líder de su job heterogéneo <strong>$JOB_ID</strong> ha cambiado de estado a:</p>
+
+<div class="card"><div class="status-hero">$END_TXT</div></div>
+
+<p>Los detalles de su job se muestran a continuación:</p>
 
 $JOB_TABLE
 
 $TRES_TABLE
 
 $JOB_OUTPUT
+</div>
 
 $SIGNATURE
 
+</div>
 </body>
 </html>

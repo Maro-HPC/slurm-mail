@@ -92,6 +92,8 @@ class ProcessSpoolFileOptions:
         self.email_from_name: Optional[str] = None
         self.email_subject: str
         self.email_headers: Dict[str, str] = {}
+        self.email_logo_url: Optional[str] = None
+        self.email_icon_url: Optional[str] = None
         self.mail_regex: str = r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
         self.validate_email: Optional[bool] = None
         self.sacct_exe: pathlib.Path
@@ -148,7 +150,7 @@ def get_tres_tables(job: Job, tres_html_tpl: pathlib.Path, tres_text_tpl: pathli
     tpl_html = Template(get_file_contents(tres_html_tpl))
     tres_table_html = tpl_html.substitute(
         TRACKABLE_RESOURCES="\n".join([
-            f"<tr>\n<td>{key}:</td>\n<td>{value}</td>\n</tr>\n" for key, value in job.tres.items()
+            f"<tr>\n<th>{key}:</th>\n<td>{value}</td>\n</tr>\n" for key, value in job.tres.items()
         ])
     )
 
@@ -556,6 +558,12 @@ def __process_spool_file(
             ACCOUNT=job.account,
         )
 
+        logger.debug("Creating e-mail header template")
+        tpl = Template(get_file_contents(options.html_templates["header"]))
+        show_email_logo = "block" if options.email_logo_url else "none"
+        show_email_icon = "block" if options.email_icon_url else "none"
+        header_html = tpl.substitute(EMAIL_LOGO_URL=options.email_logo_url, EMAIL_ICON_URL=options.email_icon_url, SHOW_EMAIL_LOGO=show_email_logo, SHOW_EMAIL_ICON=show_email_icon)
+
         logger.debug("Creating e-mail signature template")
         tpl = Template(get_file_contents(options.html_templates["signature"]))
         signature_html = tpl.substitute(EMAIL_FROM=options.email_from_name)
@@ -592,6 +600,7 @@ def __process_spool_file(
                     USER=job.user_real_name,
                     JOB_TABLE=job_table_html,
                     CLUSTER=job.cluster,
+                    HEADER=header_html,
                     SIGNATURE=signature_html,
                 )
 
@@ -600,7 +609,6 @@ def __process_spool_file(
                     ARRAY_JOB_ID=job.array_id,
                     USER=job.user_real_name,
                     JOB_TABLE=job_table_text,
-                    CLUSTER=job.cluster,
                     SIGNATURE=signature_text,
                 )
             elif job.is_hetjob():
@@ -609,6 +617,7 @@ def __process_spool_file(
                     CSS=options.css,
                     JOB_ID=job.id,
                     SIGNATURE=signature_html,
+                    HEADER=header_html,
                     USER=job.user_real_name,
                     JOB_TABLE=job_table_html,
                     CLUSTER=job.cluster,
@@ -627,6 +636,7 @@ def __process_spool_file(
                     CSS=options.css,
                     JOB_ID=job.id,
                     SIGNATURE=signature_html,
+                    HEADER=header_html,
                     USER=job.user_real_name,
                     JOB_TABLE=job_table_html,
                     CLUSTER=job.cluster,
@@ -705,6 +715,7 @@ def __process_spool_file(
                             JOB_ID=job.id,
                             ARRAY_JOB_ID=job.array_id,
                             SIGNATURE=signature_html,
+                            HEADER=header_html,
                             USER=job.user_real_name,
                             JOB_TABLE=job_table_html,
                             JOB_OUTPUT=job_output_html,
@@ -735,6 +746,7 @@ def __process_spool_file(
                             JOB_ID=job.id,
                             ARRAY_JOB_ID=job.array_id,
                             SIGNATURE=signature_html,
+                            HEADER=header_html,
                             USER=job.user_real_name,
                             JOB_TABLE=job_table_html,
                             TRES_TABLE=tres_template_result.html,
@@ -766,6 +778,7 @@ def __process_spool_file(
                         JOB_OUTPUT=job_output_html,
                         TRES_TABLE=tres_template_result.html,
                         CLUSTER=job.cluster,
+                        HEADER=header_html,
                         SIGNATURE=signature_html,
                     )
                     tpl_text = Template(get_file_contents(options.text_templates["hetjob_ended"]))
@@ -790,6 +803,7 @@ def __process_spool_file(
                         TRES_TABLE=tres_template_result.html,
                         JOB_OUTPUT=job_output_html,
                         CLUSTER=job.cluster,
+                        HEADER=header_html,
                         SIGNATURE=signature_html,
                     )
                     tpl_text = Template(get_file_contents(options.text_templates["ended"]))
@@ -813,6 +827,7 @@ def __process_spool_file(
                     JOB_TABLE=job_table_html,
                     CLUSTER=job.cluster,
                     SIGNATURE=signature_html,
+                    HEADER=header_html,
                 )
                 tpl_text = Template(get_file_contents(options.text_templates["never_ran"]))
                 body_text = tpl_text.substitute(
@@ -844,6 +859,7 @@ def __process_spool_file(
                 TRES_TABLE=tres_template_result.html,
                 CLUSTER=job.cluster,
                 SIGNATURE=signature_html,
+                HEADER=header_html,
             )
             tpl_text = Template(get_file_contents(options.text_templates["time"]))
             body_text = tpl_text.substitute(
@@ -865,6 +881,7 @@ def __process_spool_file(
                 CLUSTER=job.cluster,
                 JOB_ID=job.id,
                 SIGNATURE=signature_html,
+                HEADER=header_html,
                 USER=job.user_real_name,
                 JOB_TABLE=job_table_html,
             )
@@ -883,6 +900,7 @@ def __process_spool_file(
                 CLUSTER=job.cluster,
                 JOB_ID=job.id,
                 SIGNATURE=signature_html,
+                HEADER=header_html,
                 USER=job.user_real_name,
                 JOB_TABLE=job_table_html,
             )
@@ -1001,6 +1019,7 @@ def send_mail_main():
     options.html_templates["ended"] = html_tpl_dir / "ended.tpl"
     options.html_templates["hetjob_started"] = html_tpl_dir / "started-hetjob.tpl"
     options.html_templates["hetjob_ended"] = html_tpl_dir / "ended-hetjob.tpl"
+    options.html_templates["header"] = html_tpl_dir / "header.tpl"
     options.html_templates["invalid_dependency"] = html_tpl_dir / "invalid-dependency.tpl"
     options.html_templates["job_output"] = html_tpl_dir / "job-output.tpl"
     options.html_templates["job_table"] = html_tpl_dir / "job-table.tpl"
@@ -1059,6 +1078,8 @@ def send_mail_main():
         options.email_from_address = config.get(section, "emailFromUserAddress")
         options.email_from_name = config.get(section, "emailFromName")
         options.email_subject = config.get(section, "emailSubject")
+        options.email_logo_url = config.get(section, "emailLogoUrl")
+        options.email_icon_url = config.get(section, "emailIconUrl")
 
         if config.has_option(section, "emailHeaders"):
             for header in config.get(section, "emailHeaders").split(";"):

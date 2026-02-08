@@ -9,18 +9,26 @@
 </style>
 </head>
 <body>
+<div class="container">
 
-<p>Dear $USER,</p>
+$HEADER
 
-<p>Your job $JOB_ID on $CLUSTER has reached $REACHED% of its time limit - it has $REMAINING left.</p>
+<div class="content">
 
-<p>Details about the job can be found in the table below:</p>
+<p>Estimado(a) <strong>$USER</strong>,</p>
+
+<p>Su job nro. <strong>$JOB_ID</strong> ha alcanzado el $REACHED% de su límite de tiempo - le queda $REMAINING.</p>
+
+<p>Los detalles de su job se muestran a continuación:</p>
 
 $JOB_TABLE
 
 $TRES_TABLE
 
+</div>
+
 $SIGNATURE
 
+</div>
 </body>
 </html>

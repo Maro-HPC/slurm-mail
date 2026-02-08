@@ -193,6 +193,7 @@ def mock_slurmmail_cli_process_spool_file_options():
     options.html_templates["ended"] = HTML_TEMPLATES_DIR / "ended.tpl"
     options.html_templates["hetjob_started"] = HTML_TEMPLATES_DIR / "started-hetjob.tpl"
     options.html_templates["hetjob_ended"] = HTML_TEMPLATES_DIR / "ended-hetjob.tpl"
+    options.html_templates["header"] = HTML_TEMPLATES_DIR / "header.tpl"
     options.html_templates["invalid_dependency"] = HTML_TEMPLATES_DIR / "invalid-dependency.tpl"
     options.html_templates["job_output"] = HTML_TEMPLATES_DIR / "job-output.tpl"
     options.html_templates["job_table"] = HTML_TEMPLATES_DIR / "job-table.tpl"
